@@ -5,13 +5,14 @@ import { Color3 } from "@babylonjs/core/Maths/math.color";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { MAP, CELL, BLOCK, SIDEWALK, SIDEWALK_HEIGHT } from "./map";
 
-const BUILDING_W = 12;
-const BUILDING_D = 12;
+const BUILDING_W = 16;
+const BUILDING_D = 16;
 
+const HEIGHT_BASE = 10;
 const HEIGHT_CATEGORIES = [
-  { min: 3, max: 6 },
-  { min: 8, max: 14 },
-  { min: 16, max: 24 },
+  { min: 0, max: 6 },
+  { min: 8, max: 18 },
+  { min: 22, max: 38 },
 ];
 
 const BUILDING_GRAYS = [
@@ -63,7 +64,7 @@ export function buildCity(scene: Scene) {
 
         // building centered on lot, height from random category
         const cat = HEIGHT_CATEGORIES[Math.floor(Math.random() * HEIGHT_CATEGORIES.length)];
-        const bh = cat.min + Math.random() * (cat.max - cat.min);
+        const bh = HEIGHT_BASE + cat.min + Math.random() * (cat.max - cat.min);
 
         const bldg = MeshBuilder.CreateBox(
           `bldg_${col}_${row}`,
