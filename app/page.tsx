@@ -63,7 +63,7 @@ export default function Home() {
     const dy = e.clientY - lookRef.current.lastY;
     lookRef.current.lastX = e.clientX;
     lookRef.current.lastY = e.clientY;
-    const sensitivity = 0.005;
+    const sensitivity = 0.002;
     cameraRef.current.cameraRotation.y += dx * sensitivity;
     cameraRef.current.cameraRotation.x += dy * sensitivity;
     cameraRef.current.cameraRotation.x = Math.max(
